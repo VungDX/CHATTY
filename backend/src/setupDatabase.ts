@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
 
+mongoose.set('strictQuery', true);
 export default () => {
   const connect = () => {
     mongoose
-      .connect(`mongodb://localhost:27017:chattyapp-backend`)
+      .connect(`mongodb://localhost:27017/chattyapp-backend`)
       .then(() => {
         console.log('Successfully connected to database.');
       })
@@ -13,6 +14,5 @@ export default () => {
       });
   };
   connect();
-
   mongoose.connection.on('disconnected', connect);
 };
